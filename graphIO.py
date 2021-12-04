@@ -32,3 +32,19 @@ def writeGraphToTextFile(outputFile, graphDictionary):
     except Exception as e:
         print("There was an exception trying to write to the output file")
         raise e
+
+
+def writeFromEdgeList(outputFile, edgeList):
+    try:
+        edgeFileOut = open(outputFile, "w")
+        edgeId = 0
+        for u, v, weight in edgeList:
+            if edgeId == len(edgeList)-1:
+                edgeFileOut.write(f"{edgeId} {u} {v} {weight:.6f}")
+            else:
+                edgeFileOut.write(f"{edgeId} {u} {v} {weight:.6f}\n")
+            edgeId += 1
+        edgeFileOut.close()         
+    except Exception as e:
+        print("There was an exception trying to write to the output file")
+        raise e   
